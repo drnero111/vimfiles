@@ -1,0 +1,16 @@
+"This file is the VIMRC file loaded by VISUAL STUDIO VSVIM add-on
+"VsVim looks for a file named .vsvimrc, _vsvimrc, .vimrc or _vimrc to load Vim settings. 
+" You can put your favorite Vim settings into this file and use them with VsVim. 
+" You can check which directories that VsVim looks for this file in by using the command :set vimrcpaths?. 
+" This is typically the HOME, VIM or USERPROFILE directories. Place your vimrc file in one of these directories, restart Visual Studio and VsVim will load those settings. 
+" You can verify which vimrc file is currently loaded in VsVim by using the command :set vimrc?
+:echo "hi there"
+":tabr (rewind), :tabl (last), tabn (optional number, move over to right "tabs), tabp (opt number) move left
+
+" this remaps gp so that put will move the cursor to original position after
+" pasting  ... this is great when pasting the same thing at same location 
+" across multiple lines (e.g. pasting comments at not quite end of multiple lines)
+noremap gp p`[h
+noremap gP P`[
+
+

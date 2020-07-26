@@ -1,0 +1,16 @@
+#~/.vim => only temporary files go here.  And packages that you can reinstall
+#
+#~/vimfiles
+#    IGNORE
+#        pack => directory, ignore, kite installs here
+#        ~ => any file ending in ~
+#        .netrwhist
+#
+#    KEEP
+#        .gitignore
+#        .vsvimrc => vimrc for visual studio
+#        vimrc => main vimrc 
+
+pack
+*~
+.netrwhist
