@@ -5,7 +5,19 @@
 "   ~/.vim/undofiles
 "   ~/.vim/swapfiles
 "  ~ on windows maps to c:\Users\Ron Anderson\
-
+"
+"  For linux, make the directories above
+"  clone vimfiles from github
+"      git clone  https://github.com/drnero111/vimfiles.git ~/vimfiles
+"  Run this command to get vim plugin manager
+"      curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"          https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"  Add these two lines to end of .bashrc
+"      export MYVIMRC=~/vimfiles/vimrc$
+"      export VIMINIT='source $MYVIMRC'$
+"  Run plugin update stuff mentioned below...
+"     < DONE WITH LINUX >
+"
 " Many settings are used from this vimrc example: https://github.com/scrooloose/vimfiles/blob/master/vimrc
 " ---------------------------------------
 " ------- Handle Plug-ins ---------------
@@ -103,7 +115,9 @@ set scrolloff=3                            " Keep 3 lines below and above the cu
 set ruler                                " line numbers and column the cursor is on
 set number                                " Show line numbering
 set numberwidth=1                        " Use 1 col + 1 space for numbers
-colorscheme tolerable                        " Use tango colors, Rdark is good, tolerable is light one
+if has('win32') || has('win64')
+	colorscheme tolerable                        " Use tango colors, Rdark is good, tolerable is light one
+endif
 
 set mouse=a
 if !has("nvim")
@@ -222,51 +236,54 @@ function! RonSource3rdWindow()
    :source %
    :call RunParse()
 endfunction
-" These buttons are for running 3 vim window parsers inside of vim, using
-" python, input, and output windows (vim windows)
-"
-amenu icon=Arrange3Windows ToolBar.Arrange3Windows :call RonArrange3Windows()<cr>
 
-amenu icon=Arrange3Windows ToolBar.WideWindow :call RonWideWindow()<cr>
+if has('win32') || has('win64')
+	" These buttons are for running 3 vim window parsers inside of vim, using
+	" python, input, and output windows (vim windows)
+	"
+	amenu icon=Arrange3Windows ToolBar.Arrange3Windows :call RonArrange3Windows()<cr>
 
-" 'source' the parser window , at the bottom..
-amenu icon=SourceWin3 ToolBar.Source3rdWindow :call RonSource3rdWindow()<cr>
+	amenu icon=Arrange3Windows ToolBar.WideWindow :call RonWideWindow()<cr>
+
+	" 'source' the parser window , at the bottom..
+	amenu icon=SourceWin3 ToolBar.Source3rdWindow :call RonSource3rdWindow()<cr>
 
 
-" now add a toolbar button to grab the path of the file for you
-" amenu icon=c:\Program\ Files\Vim\vim71\bitmaps\hand_box.bmp ToolBar.GetPath :call RonGetPathOfFile()<CR>
-amenu icon=hand_box ToolBar.GetFullHead :call RonGetFullHeadOfFile()<CR>
-tmenu ToolBar.GetFullHead Copy head (path wo filename) of edited file to Clipboard
-amenu icon=hand_box ToolBar.GetFullPath :call RonGetFullPathOfFile()<CR>
-tmenu ToolBar.GeFulltPath Copy full path of edited file to Clipboard
-amenu icon=hand_box ToolBar.GetTail :call RonGetTailOfFile()<CR>
-tmenu ToolBar.GetTail Copy tail (name wo path) of edited file to Clipboard
+	" now add a toolbar button to grab the path of the file for you
+	" amenu icon=c:\Program\ Files\Vim\vim71\bitmaps\hand_box.bmp ToolBar.GetPath :call RonGetPathOfFile()<CR>
+	amenu icon=hand_box ToolBar.GetFullHead :call RonGetFullHeadOfFile()<CR>
+	tmenu ToolBar.GetFullHead Copy head (path wo filename) of edited file to Clipboard
+	amenu icon=hand_box ToolBar.GetFullPath :call RonGetFullPathOfFile()<CR>
+	tmenu ToolBar.GeFulltPath Copy full path of edited file to Clipboard
+	amenu icon=hand_box ToolBar.GetTail :call RonGetTailOfFile()<CR>
+	tmenu ToolBar.GetTail Copy tail (name wo path) of edited file to Clipboard
 
-"old--> amenu icon=PyToCmd ToolBar.PyRunInCmdWindow :w\|!start python %<cr>
-" make sure python is in path
-amenu icon=PyToCmd ToolBar.PyRunInCmdWindow :silent w\|silent !start python %<cr>
-tmenu ToolBar.PyRunInCmdWindow Launch this file in python interpetrer in separate window <F10>
-" I add another toolbar item as well, but it must be in another file -- "run
-" python inside of vim"
+	"old--> amenu icon=PyToCmd ToolBar.PyRunInCmdWindow :w\|!start python %<cr>
+	" make sure python is in path
+	amenu icon=PyToCmd ToolBar.PyRunInCmdWindow :silent w\|silent !start python %<cr>
+	tmenu ToolBar.PyRunInCmdWindow Launch this file in python interpetrer in separate window <F10>
+	" I add another toolbar item as well, but it must be in another file -- "run
+	" python inside of vim"
 
-" Lets get rid of unused toolbar buttons
-aunmenu ToolBar.Open
-aunmenu ToolBar.SaveAll
-aunmenu ToolBar.Print
-aunmenu ToolBar.Cut
-"aunmenu ToolBar.Copy
-aunmenu ToolBar.Paste
-aunmenu ToolBar.-sep3-
-aunmenu ToolBar.Replace
-aunmenu ToolBar.FindNext
-aunmenu ToolBar.FindPrev
-aunmenu ToolBar.-sep5-
-aunmenu ToolBar.Make
-aunmenu ToolBar.RunCtags
-aunmenu ToolBar.TagJump
-"unmenu ToolBar.-sep7-
-aunmenu ToolBar.Help
-aunmenu ToolBar.FindHelp
+	" Lets get rid of unused toolbar buttons
+	aunmenu ToolBar.Open
+	aunmenu ToolBar.SaveAll
+	aunmenu ToolBar.Print
+	aunmenu ToolBar.Cut
+	"aunmenu ToolBar.Copy
+	aunmenu ToolBar.Paste
+	aunmenu ToolBar.-sep3-
+	aunmenu ToolBar.Replace
+	aunmenu ToolBar.FindNext
+	aunmenu ToolBar.FindPrev
+	aunmenu ToolBar.-sep5-
+	aunmenu ToolBar.Make
+	aunmenu ToolBar.RunCtags
+	aunmenu ToolBar.TagJump
+	"unmenu ToolBar.-sep7-
+	aunmenu ToolBar.Help
+	aunmenu ToolBar.FindHelp
+endif
 
 "python << EOF
 "def RunDebugger():
