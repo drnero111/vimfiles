@@ -13,8 +13,8 @@
 "      curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 "          https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 "  Add these two lines to end of .bashrc
-"      export MYVIMRC=~/vimfiles/vimrc$
-"      export VIMINIT='source $MYVIMRC'$
+"      export MYVIMRC=~/vimfiles/vimrc
+"      export VIMINIT='source $MYVIMRC'
 "  Run plugin update stuff mentioned below...
 "     < DONE WITH LINUX >
 "
