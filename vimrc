@@ -442,4 +442,7 @@ inoremap <C-L> <C-O>:nohls<CR>
 "   <leader>nt   to start nerdtree window
 "   Type '?' for help
 
-
+" To draw timing diagrams
+"   :set guifont=consolas
+"   :set encoding=utf-8
+"   :digraphs
