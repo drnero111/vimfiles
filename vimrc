@@ -312,7 +312,7 @@ noremap gP P`[
 
 
 
-if v:version >= 810
+if v:version >= 801
     set termwinscroll=100000   " default is only 10000
 endif
 " Switch to powershell for the shell
