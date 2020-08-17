@@ -312,7 +312,9 @@ noremap gP P`[
 
 
 
-set termwinscroll=100000   " default is only 10000
+if v:version >= 810
+    set termwinscroll=100000   " default is only 10000
+endif
 " Switch to powershell for the shell
 " "  Use :terminal to kick of a power shell session within VIM !
 " "  Use :bot vert term  ... open term window on the right side vertically
